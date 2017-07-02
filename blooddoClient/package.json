@@ -8,7 +8,7 @@
     "serve-prod": "ng serve --proxy-config proxy.conf.json --env=prod",
     "start": "ng serve-dev",
     "build-dev": "ng build --env=dev",
-    "build-prod": "ng build --env=prod",
+    "build-prod": "ng build --env=prod"
   },
   "private": true,
   "dependencies": {
