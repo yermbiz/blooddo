@@ -20,7 +20,7 @@ export class MapComponent implements OnInit {
   public donor: boolean = true;
   ip;
   showDonorsOnMap;
-  socket = io('http://localhost:3001');
+  socket = io(environment.host);
   loading = true;
   @ViewChild('mapViewNode') private mapViewEl: ElementRef;
   @ViewChild('newDonorPopup') private newDonorPopupEl;
@@ -121,6 +121,7 @@ export class MapComponent implements OnInit {
         if (!showFlag) {
           this.mapView.graphics.removeAll();
         } else {
+          this.mapView.graphics.removeAll();
           this.blooddo.getDonors(this.mapView.extent)
               .subscribe(
                 (response) => {

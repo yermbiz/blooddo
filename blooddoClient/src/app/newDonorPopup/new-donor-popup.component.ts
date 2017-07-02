@@ -22,6 +22,7 @@ export class NewDonorPopupComponent {
 
   public showNewDonorForm(data: any) {
     this.address = data.address;
+    this.donorFormGroupsEl.cleanDonorData();
     this.donorFormGroupsEl.extendDonorData(data);
     document.getElementById("donorForm").style.display = "block";
   }

@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  logging: true
+  logging: true,
+  host: 'http://localhost:3001'
 };
