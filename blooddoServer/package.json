@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/..."
+    "url": "https://github.com/yermbiz/blooddo"
   },
   "main": "lib/server.js",
   "scripts": {
@@ -37,5 +37,5 @@
     "pre-commit": "^1.2.2",
     "underscore": "^1.8.3"
   },
-  "license": "..."
+  "license": "MIT"
 }
