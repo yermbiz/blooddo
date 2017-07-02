@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const morgan = require('morgan');
 const api = require('./routes/api');
 const config = require('./config');
 
@@ -34,16 +35,19 @@ mongoose.connection.on('connected', () => {
 });
 
 const app = express();
+
+
 app.set('port', process.env.PORT || 3001);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(morgan('dev'));
 
 const staticPath = path.join(__dirname, config.client_path);
 app.use(express.static(staticPath));
 
 app.use('/api', api);
-// Catch all other routes and return the index file
+
 app.get(['/', '/donor/:link'], (req, res) => {
   res.sendFile(path.join(staticPath,'index.html'));
 });
@@ -54,10 +58,8 @@ const server = require('http').createServer(app);
 //  */
 const io = require('socket.io')(server);
 io.on('connection', (socket) => {
-  console.log('user connected');
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
   });
 
   process.on('data-changed', () => {
