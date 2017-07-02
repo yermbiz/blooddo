@@ -1,0 +1,65 @@
+<div style="height:500px">
+  <h2 *ngIf="!deleted" style="text-align: center">
+    Welcome to the donor's corner. Here you'll find editable data concerning your posting.
+  </h2>
+  <h2 *ngIf="deleted" style="text-align: center">
+    Donor posting {{link}} has been deleted
+  </h2>
+  <div *ngIf="deleted" class="centralized">
+    <button class="btn default" (click)="home()">Home</button>
+  </div>
+  <div *ngIf="alert" class="centralized alert" style="width:50%">
+      <strong>Attention!</strong> {{alert}}
+  </div>
+
+  <div *ngIf="!editing && !deleted && donorData">
+
+    <div class="div-table">
+          <div class="div-table-row">
+            <div class="div-table-col">First name</div>
+            <div class="div-table-col">{{donorData?.firstName}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">Last name</div>
+            <div class="div-table-col">{{donorData?.lastName}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">Contact number</div>
+            <div class="div-table-col">{{donorData?.contactNumber}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">Email</div>
+            <div class="div-table-col">{{donorData?.email}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">Blood group</div>
+            <div class="div-table-col">{{donorData?.bloodGroup}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">Address</div>
+            <div class="div-table-col">{{donorData?.address}}</div>
+          </div>
+          <div class="div-table-row">
+            <div class="div-table-col">IP at the time of posting</div>
+            <div class="div-table-col">{{donorData?.ip}}</div>
+          </div>
+    </div>
+    <br />
+    <div class="centralized">
+      <button class="btn success" (click)="edit()">Edit</button>
+      <button class="btn default" (click)="deleteDonor()">Delete donor's position</button>
+    </div>
+  </div>
+
+  <div id="edit" style="border: 1px solid; margin-left: auto; margin-right: auto; display:none; padding: 20px; width:50%">
+      <p class="title">Please edit the donor's data</p>
+      <br />
+      <donor-form-groups #donorFormGroups></donor-form-groups>
+      <br /><br />
+
+      <div class="centralized">
+        <button class="btn success" (click)="updateDonor()">Update</button>
+        <button class="btn default" (click)="cancelDonor()">Cancel</button>
+      </div>
+  </div>
+</div>

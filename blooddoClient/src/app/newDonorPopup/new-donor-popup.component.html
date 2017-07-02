@@ -1,0 +1,27 @@
+<div id="donorForm" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="cancelNewDonor()" >&times;</span>
+    <br /><p class="title">You want to register a donor for adress {{address}}</p>
+    <p>Please extend your data</p>
+    <br />
+
+    <donor-form-groups #donorFormGroups></donor-form-groups>
+
+    <br />
+    <button class="btn success" (click)="submitNewDonor()">Submit</button>
+    <button class="btn default" (click)="cancelNewDonor()">Cancel</button>
+  </div>
+</div>
+
+<div id="messagePopup" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="closeMessage()" >&times;</span>
+    <br /><p class="title">Message</p>
+    <p>{{report.data.message}}</p>
+    <div *ngIf="report.code === 0">
+      Use this <a target="_blank" href="{{report.data.link}}">link</a> to view/edit your posting.
+    </div>
+    <br />
+    <button class="btn default" (click)="closeMessage()">Close</button>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="border">
+  <div id="left">
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" [(ngModel)]="donor" class="onoffswitch-checkbox" id="myonoffswitch" (change)="onSwitchChange()" checked>
+        <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+        </label>
+    </div>
+    <p *ngIf="donor">
+      If you want to become a donor, just find your location on the map, click on it and submit the form.
+    </p>
+    <p *ngIf="!donor">
+      Please you the map to find locations of donors. Go get more information about a donor just click on its mark. 
+    </p>
+  </div>
+
+  <div id="right">
+    <div *ngIf="loading" class="loading">
+      <h1>Loading map ...</h1>
+    </div>
+    <div #mapViewNode></div>
+  </div>
+  <new-donor-popup #newDonorPopup></new-donor-popup>
+</div>

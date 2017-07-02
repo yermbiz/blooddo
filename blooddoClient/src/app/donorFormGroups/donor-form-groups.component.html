@@ -1,0 +1,77 @@
+<div class="form-group">
+  <label for="firstName">First name</label>
+  <input type="text" class="form-control" id="firstName"
+         required
+         pattern="[a-zA-Z][a-zA-Z ]+"
+         [(ngModel)]="donor.firstName" name="firstName"
+         #firstName="ngModel">
+  <div [hidden]="firstName.valid || firstName.pristine"
+       class="alert alert-danger">
+        <div [hidden]="!firstName.hasError('required')">First name is required</div>
+    <div [hidden]="!firstName.hasError('pattern')">Only alphabets allowed</div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="lastName">Last name</label>
+  <input type="text" class="form-control" id="lastName"
+         required
+         pattern="[a-zA-Z][a-zA-Z ]+"
+         [(ngModel)]="donor.lastName" name="lastName"
+         #lastName="ngModel">
+  <div [hidden]="lastName.valid || lastName.pristine"
+       class="alert alert-danger">
+        <div [hidden]="!lastName.hasError('required')">Last name is required</div>
+    <div [hidden]="!lastName.hasError('pattern')">Only alphabets allowed</div>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="contactNumber">Phone</label>
+  <input type="text" class="form-control" id="contactNumber"
+         required
+         pattern="(?:\b|[+])[0-9]*(?:\b|[_\s])[0-9]*(?:\b|[_\s])[0-9]*(?:\b|[_\s])[0-9]*"
+         minlength="5"
+         [(ngModel)]="donor.contactNumber" name="contactNumber"
+         #contactNumber="ngModel">
+  <div [hidden]="contactNumber.valid || contactNumber.pristine"
+       class="alert alert-danger">
+       <div [hidden]="!contactNumber.hasError('minlength')">Phone should be > 5digit</div>
+       <div [hidden]="!contactNumber.hasError('required')">Phone is required</div>
+       <div [hidden]="!contactNumber.hasError('pattern')">Phone numberr should be only numbers, spaces and optionally leading. Phone format: <small><b>+xx xxx xxxx xxx | 00xx xxx xxxx xxx</b></small></div>
+
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="email">Email</label>
+  <input type="text" class="form-control" id="email"
+         required
+         pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+         [(ngModel)]="donor.email" name="email"
+         #email="ngModel">
+  <div [hidden]="email.valid || email.pristine"
+       class="alert alert-danger">
+       <div [hidden]="!email.hasError('required')">Email is required</div>
+       <div [hidden]="!email.hasError('pattern')">Email format should be <small><b>info@abc.com</b></small></div>
+  </div>
+</div>
+<br />
+<div class="form-group">
+  <label for="bloodGroup">Blood group</label>
+  <select [(ngModel)]="donor.bloodGroup">
+    <option selected value="O+">O+</option>
+    <option value="O-">O-</option>
+    <option value="A+">A+</option>
+    <option value="A-">A-</option>
+    <option value="B+">B+</option>
+    <option value="B-">B-</option>
+    <option value="AB+">AB+</option>
+    <option value="AB-">AB-</option>
+  </select>
+</div>
+
+<div *ngIf="donor.warn != null" class="alert">
+  <span class="closebtn" (click)="donor.warn=null;">&times;</span>
+  {{donor.warn}}
+</div>

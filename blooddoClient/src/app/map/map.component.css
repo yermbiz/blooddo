@@ -1,0 +1,77 @@
+/* import the required JSAPI css */
+@import 'https://js.arcgis.com/4.3/esri/css/main.css';
+
+.esri-view {
+    height: 500px;
+    border: 3px solid;
+}
+
+.loading {
+    height: 500px;
+    text-align: center;
+    border: 3px solid;
+}
+
+.border {
+    border: 3px solid;
+}
+
+div#left {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+
+div#right {
+    margin-left: 170px;
+    padding: 1em;
+    overflow: hidden;
+}
+
+/* switch */
+.onoffswitch {
+    position: relative; width: 171px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 6px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 65px; padding: 0; line-height: 65px;
+    font-size: 22px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "DONOR";
+    padding-left: 8px;
+    background-color: #D9033C; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "PATIENT";
+    padding-right: 8px;
+    background-color: #039E18; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 21px; margin: 22px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 102px;
+    border: 2px solid #999999; border-radius: 6px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+}
